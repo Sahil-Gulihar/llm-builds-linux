@@ -9,7 +9,8 @@ This document summarizes the complete trajectory of LLM agents building Chromium
 | Total wall-clock time | ~6 hours |
 | Agent active time | ~3 hours |
 | Sessions | 2 |
-| Human interventions | 1 (Xcode installation) |
+| Human messages | 10 (1 initial + 9 follow-ups) |
+| Human interventions | 1 critical (Xcode installation) |
 | Final result | SUCCESS - Chromium.app built |
 | **Total cost** | **$42.84** |
 | Model | Claude Opus 4.5 |
@@ -261,8 +262,16 @@ Progress snapshots:
 5. **Monitoring** - Agent polled build progress and detected completion
 
 ### What Required Human Help
-1. **Xcode installation** - Agent cannot install macOS applications
+1. **Xcode installation** - Agent cannot install macOS applications (critical blocker)
 2. **sudo commands** - Agent noted but couldn't execute `xcode-select -s`
+3. **Session continuation** - Human had to start Session 2 and say "continue"
+4. **Progress check-ins** - Human asked "lmk when it's finished", "where is the source", etc.
+5. **Documentation guidance** - Human directed what to commit and how to summarize
+
+### Human Interaction Count
+- **Session 1:** 1 message (initial task: "can you try building chrome for me")
+- **Session 2:** 9 messages (continuation prompts, clarifications, documentation requests)
+- **Total:** 10 human messages across both sessions
 
 ### Blockers Encountered
 1. **Xcode vs Command Line Tools** - Chromium requires full Xcode
