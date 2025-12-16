@@ -1,5 +1,7 @@
 # Agent Trajectory Summary: Building Chromium
 
+**PR:** https://github.com/benchflow-ai/llm-builds-linux/pull/1 (MERGED)
+
 This document summarizes the complete trajectory of LLM agents building Chromium from source on macOS ARM64.
 
 ## Overview
@@ -9,7 +11,8 @@ This document summarizes the complete trajectory of LLM agents building Chromium
 | Total wall-clock time | ~6 hours |
 | Agent active time | ~3 hours |
 | Sessions | 2 |
-| Human interventions | 1 (Xcode installation) |
+| Human messages (build task) | 3 (1 initial + 2 follow-ups) |
+| Human interventions | 1 critical (Xcode installation) |
 | Final result | SUCCESS - Chromium.app built |
 | **Total cost** | **$42.84** |
 | Model | Claude Opus 4.5 |
@@ -261,8 +264,18 @@ Progress snapshots:
 5. **Monitoring** - Agent polled build progress and detected completion
 
 ### What Required Human Help
-1. **Xcode installation** - Agent cannot install macOS applications
+1. **Xcode installation** - Agent cannot install macOS applications (critical blocker)
 2. **sudo commands** - Agent noted but couldn't execute `xcode-select -s`
+3. **Session continuation** - Human had to start Session 2 and say "continue"
+4. **Progress check-ins** - Human asked "lmk when it's finished", "where is the source", etc.
+5. **Documentation guidance** - Human directed what to commit and how to summarize
+
+### Human Interaction Count (Build Task Only)
+- **Session 1:** 1 message ("can you try building chrome for me")
+- **Session 2:** 2 messages ("continue building chrome for me", "lmk when it's finished")
+- **Total:** 3 human messages to complete the build
+
+Note: Additional messages after build completion were for documentation/trajectory analysis, not part of the build task itself.
 
 ### Blockers Encountered
 1. **Xcode vs Command Line Tools** - Chromium requires full Xcode
