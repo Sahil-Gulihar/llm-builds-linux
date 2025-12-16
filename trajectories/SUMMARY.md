@@ -11,6 +11,32 @@ This document summarizes the complete trajectory of LLM agents building Chromium
 | Sessions | 2 |
 | Human interventions | 1 (Xcode installation) |
 | Final result | SUCCESS - Chromium.app built |
+| **Total cost** | **$42.84** |
+| Model | Claude Opus 4.5 |
+
+
+## Cost & Token Usage
+
+| Metric | Session 1 | Session 2 | Total |
+|--------|-----------|-----------|-------|
+| Input tokens | 2,169 | 143 | 2,312 |
+| Output tokens | 6,970 | 10,156 | 17,126 |
+| Cache read tokens | 3,600,149 | 3,772,117 | 7,372,266 |
+| Cache creation tokens | 297,132 | 1,327,373 | 1,624,505 |
+| API calls | 91 | 111 | 202 |
+| **Cost** | **$11.53** | **$31.31** | **$42.84** |
+
+### Cost Breakdown by Token Type
+- Input tokens: $0.03 (@ $15/M)
+- Output tokens: $1.28 (@ $75/M)
+- Cache read: $11.06 (@ $1.50/M)
+- Cache creation: $30.46 (@ $18.75/M)
+
+### Cost Efficiency Notes
+- Most cost came from cache creation (71% of total)
+- Session 2 was more expensive due to longer monitoring with many API calls
+- Cache read was heavily utilized (7.4M tokens) keeping costs down
+- Effective rate: ~$7/hour of agent active time
 
 ## Session 1: Setup and Source Fetch
 
